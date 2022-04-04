@@ -3,15 +3,11 @@ from robot import Robot
 
 
 class Battlefield:
-    def __init__(self, robot, dinosaur):
-        self.robot = Robot
-        self.dinosaur = Dinosaur
+    def __init__(self):
+        self.robot = Robot("Cl4ptr4p")
+        self.dinosaur = Dinosaur("Yoshi", 40)
         self.winner = ""
 
-    def run_game(self):
-        self.display_welcome
-        self.battle_phase
-        self.display_winner
     def display_welcome(self):
         print("Time for another round of Robot vs Dinosaur!")
     def battle_phase(self):
@@ -36,3 +32,7 @@ class Battlefield:
          if self.winner == robot.robot_name:
              print(f"{robot.robot_name} is the winner!")
          pass
+    def run_game(self):
+        self.display_welcome()
+        self.battle_phase()
+        self.display_winner()
