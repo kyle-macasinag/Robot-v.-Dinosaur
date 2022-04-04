@@ -11,26 +11,24 @@ class Battlefield:
     def display_welcome(self):
         print("Time for another round of Robot vs Dinosaur!")
     def battle_phase(self):
-        robot = Robot
-        dinosaur = Dinosaur
-        while robot.robot_health > 0 and dinosaur.dino_health > 0:
-            robot.attack()
-            dinosaur.dino_attack()
-        if robot.robot_health < 1:
-            print(f"{robot.robot_name} broke down!")
-            self.winner = dinosaur.dino_name
-        if dinosaur.dino_health < 1:
-            print(f"{dinosaur.dino_name} has collapsed!")
-            self.winner = robot.robot_name
-        pass
+        while self.robot.robot_health > 0 and self.dinosaur.dino_health > 0:
+            self.robot.attack(self.dinosaur)
+            if self.dinosaur.dino_health < 1:
+                print(f"{self.dinosaur.dino_name} has collapsed!")
+            self.winner = self.robot.robot_name
+            self.dinosaur.dino_attack(self.robot)
+            if self.robot.robot_health < 1:
+                print(f"{self.robot.robot_name} broke down!")
+                self.winner = self.dinosaur.dino_name
+       
+        
 
     def display_winner(self):
-         robot = Robot
-         dinosaur = Dinosaur
-         if self.winner == dinosaur.dino_name:
-             print(f"{dinosaur.dino_name} is the winner!")
-         if self.winner == robot.robot_name:
-             print(f"{robot.robot_name} is the winner!")
+
+         if self.winner == self.dinosaur.dino_name:
+             print(f"{self.dinosaur.dino_name} is the winner!")
+         if self.winner == self.robot.robot_name:
+             print(f"{self.robot.robot_name} is the winner!")
          pass
     def run_game(self):
         self.display_welcome()

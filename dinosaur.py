@@ -8,5 +8,5 @@ class Dinosaur:
 
 
     def dino_attack(self, robot):
-        robot.health -= self.dino_attack_power
+        robot.robot_health -= self.dino_attack_power
         print (f"{self.dino_name} bites {robot.robot_name} for {self.dino_attack_power} damage. They now have {robot.robot_health} hp.")
