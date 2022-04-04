@@ -12,14 +12,17 @@ class Battlefield:
         print("Time for another round of Robot vs Dinosaur!")
     def battle_phase(self):
         while self.robot.robot_health > 0 and self.dinosaur.dino_health > 0:
-            self.robot.attack(self.dinosaur)
-            if self.dinosaur.dino_health < 1:
-                print(f"{self.dinosaur.dino_name} has collapsed!")
-            self.winner = self.robot.robot_name
-            self.dinosaur.dino_attack(self.robot)
-            if self.robot.robot_health < 1:
-                print(f"{self.robot.robot_name} broke down!")
-                self.winner = self.dinosaur.dino_name
+            if self.robot.robot_health >= 1:
+                self.robot.attack(self.dinosaur)
+                if self.dinosaur.dino_health < 1:
+                    print(f"{self.dinosaur.dino_name} has collapsed!")
+                    self.winner = self.robot.robot_name
+
+            if self.dinosaur.dino_health >= 1:
+                self.dinosaur.dino_attack(self.robot)
+                if self.robot.robot_health < 1:
+                    print(f"{self.robot.robot_name} broke down!")
+                    self.winner = self.dinosaur.dino_name
        
         
 
